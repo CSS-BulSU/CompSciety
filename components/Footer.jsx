@@ -1,9 +1,24 @@
+import Link from "next/link";
 import { Mail } from "lucide-react";
 import { FaYoutube, FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
-import Logo from "./ui/Logo";
+import Image from 'next/image';
+import logo from '../assets/logo.png';
 
-const NAV_LINKS = ["Home", "About", "Events", "Announcements", "Blog"];
-const SOCIALS = [FaYoutube, FaInstagram, FaLinkedin, FaFacebook];
+const NAV_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Events", href: "/events" },
+  { label: "Announcements", href: "/#announcements" },
+  { label: "Blog", href: "/blog" },
+];
+
+// Updated to include hrefs
+const SOCIALS = [
+  { icon: FaYoutube, href: "https://youtube.com/@yourhandle" },
+  { icon: FaInstagram, href: "https://instagram.com/yourhandle" },
+  { icon: FaLinkedin, href: "https://linkedin.com/company/yourhandle" },
+  { icon: FaFacebook, href: "https://facebook.com/yourhandle" },
+];
 
 export default function Footer() {
   return (
@@ -11,33 +26,37 @@ export default function Footer() {
       <div className="mx-auto max-w-5xl grid sm:grid-cols-3 gap-10">
         <div>
           <div className="flex items-center gap-3">
-            <Logo className="w-10 h-10" />
+            <Image src={logo} alt="CompSciety Logo" width={60} height={60} />
             <div>
               <p className="font-heading font-bold text-white">CompSciety</p>
               <p className="text-green-400/70 text-xs">EST 2025</p>
             </div>
           </div>
           <div className="flex gap-3 mt-5">
-            {SOCIALS.map((Icon, i) => (
-              <a
+            {SOCIALS.map((social, i) => (
+              <Link
                 key={i}
-                href="#"
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-green-950 flex items-center justify-center text-white hover:bg-green-800 transition-colors"
               >
-                <Icon size={16} />
-              </a>
+                <social.icon size={16} />
+              </Link>
             ))}
           </div>
         </div>
 
+        {/* ... rest of your code remains the same ... */}
+        
         <div>
           <h5 className="font-heading font-bold text-white mb-4">Navigation</h5>
           <ul className="space-y-2 text-sm text-green-200/70">
             {NAV_LINKS.map((l) => (
-              <li key={l}>
-                <a href="#" className="hover:text-white transition-colors">
-                  {l}
-                </a>
+              <li key={l.label}>
+                <Link href={l.href} className="hover:text-white transition-colors">
+                  {l.label}
+                </Link>
               </li>
             ))}
           </ul>

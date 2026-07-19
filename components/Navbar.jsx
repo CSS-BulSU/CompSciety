@@ -1,10 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Menu, X, Sparkles } from "lucide-react";
-import Logo from "./ui/Logo";
+import Image from 'next/image';
+import logo from '../assets/logo.png';
 
-const LINKS = ["Home", "About", "Events", "Blog", "Contact"];
+const LINKS = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Events", href: "/events" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -12,13 +20,15 @@ export default function Navbar() {
   return (
     <header className="relative z-20 px-4 sm:px-8 pt-6">
       <nav className="mx-auto max-w-6xl flex items-center justify-between rounded-full bg-black/40 backdrop-blur-md border border-green-800/40 px-4 sm:px-6 py-3">
-        <Logo className="w-9 h-9" />
+        <Link href="/">
+          <Image src={logo} alt="CompSciety Logo" width={60} height={60} />
+        </Link>
 
         <div className="hidden md:flex items-center gap-8 font-heading font-semibold text-sm text-white">
           {LINKS.map((l) => (
-            <a key={l} href="#" className="hover:text-green-400 transition-colors">
-              {l}
-            </a>
+            <Link key={l.label} href={l.href} className="hover:text-green-400 transition-colors">
+              {l.label}
+            </Link>
           ))}
         </div>
 
@@ -35,9 +45,9 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden mt-2 mx-auto max-w-6xl rounded-2xl bg-black/70 backdrop-blur-md border border-green-800/40 p-4 flex flex-col gap-3 font-heading font-semibold text-white">
           {LINKS.map((l) => (
-            <a key={l} href="#" className="hover:text-green-400">
-              {l}
-            </a>
+            <Link key={l.label} href={l.href} className="hover:text-green-400" onClick={() => setOpen(false)}>
+              {l.label}
+            </Link>
           ))}
         </div>
       )}
