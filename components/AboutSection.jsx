@@ -1,5 +1,5 @@
 import GradientPillButton from "./ui/GradientPillButton";
-import MissionVisionCards from "../app/about/MissionVisionCards";
+import MissionVisionCards from "./about/MissionVisionCards";
 import { ABOUT_PARAGRAPH } from "@/lib/aboutContent";
 
 export default function AboutSection() {

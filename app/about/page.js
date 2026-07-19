@@ -1,11 +1,11 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AboutIntro from "@/app/about/AboutIntro";
-import MissionVisionCards from "@/app/about/MissionVisionCards";
-import AdvisersSection from "@/app/about/AdvisersSection";
-import OfficersSection from "@/app/about/OfficersSection";
-import ExecutivesSection from "@/app/about/ExecutivesSection";
-import CommitteesSection from "@/app/about/CommitteesSection";
+import AboutIntro from "@/components/about/AboutIntro";
+import MissionVisionCards from "@/components/about/MissionVisionCards";
+import AdvisersSection from "@/components/about/AdvisersSection";
+import OfficersSection from "@/components/about/OfficersSection";
+import ExecutivesSection from "@/components/about/ExecutivesSection";
+import CommitteesSection from "@/components/about/CommitteesSection";
 
 export const metadata = {
   title: "About | CompSciety",
